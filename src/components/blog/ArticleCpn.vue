@@ -108,7 +108,7 @@ export default {
       articles: {},
       delArtId: '',
       delArtdialogVisible: false,
-      emitData:{}
+      emitData: {}
     }
   },
   methods: {
@@ -135,7 +135,6 @@ export default {
     changeOrigin(articleinfo) {
       this.$http.put(`articles/${articleinfo.id}/ChangeOriginal/`).then(res => {
         this.$message.success("更新成功")
-        // console.log(res);
       }).catch(
           err => {
             this.$message.error("更新失败")
@@ -160,9 +159,8 @@ export default {
           }
       )
     },
-    editArticle(artinfo){
-      this.$router.push('/article/'+artinfo.id);
-      // console.log(artinfo);
+    editArticle(artinfo) {
+      this.$router.push('/article/' + artinfo.id);
       this.emitData = artinfo
 
 
@@ -173,8 +171,7 @@ export default {
     this.getArticles()
   },
   beforeDestroy() {
-    eventBus.$emit("sendArtinfo",this.emitData);
-      // console.log(eventBus);
+    eventBus.$emit("sendArtinfo", this.emitData);
   }
 }
 </script>

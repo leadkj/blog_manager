@@ -51,12 +51,12 @@
         <el-form-item label="是否原创" prop="original">
           <el-switch v-model="articleForm.original"></el-switch>
         </el-form-item>
-<!--        <el-form-item label="作者" prop="author" required>-->
-<!--          <el-select v-model="articleForm.author" placeholder="请选择作者">-->
-<!--            <el-option :label="author.username+'('+author.nick_name+')'" :value="author.id" v-for="author in  authors"-->
-<!--                       :key="author.id"></el-option>-->
-<!--          </el-select>-->
-<!--        </el-form-item>-->
+        <!--        <el-form-item label="作者" prop="author" required>-->
+        <!--          <el-select v-model="articleForm.author" placeholder="请选择作者">-->
+        <!--            <el-option :label="author.username+'('+author.nick_name+')'" :value="author.id" v-for="author in  authors"-->
+        <!--                       :key="author.id"></el-option>-->
+        <!--          </el-select>-->
+        <!--        </el-form-item>-->
         <el-form-item label="分类" prop="category" required>
           <el-select v-model="articleForm.category" placeholder="请选择分类">
             <el-option :label="category.name" :value="category.id" v-for="category in  categorys"
@@ -104,7 +104,7 @@ export default {
         original: false,
         category: '',
         tag: '',
-        author:1
+        author: 1
       },
       rules: {
         name: [
@@ -132,7 +132,6 @@ export default {
     handleImageAdded(file, Editor, cursorLocation, resetUploader) {
       let formData = new FormData();
       formData.append('image', file);
-      // console.log(formData.get('file'));
       this.$http({
         url: 'articles/imageUpload/',
         method: 'post',
@@ -141,10 +140,8 @@ export default {
           'Content-Type': 'multipart/form-data'
         },
       }).then(res => {
-        console.log(res);
         Editor.insertEmbed(cursorLocation, 'image', res.data.url);
         resetUploader();
-        console.log(this.content);
       }).catch(err => {
         console.log(err);
         this.$message.error("图片上传失败")
@@ -152,7 +149,6 @@ export default {
 
     },
     submitForm() {
-      console.log(this.articleForm);
       this.$http.post('articles/', this.articleForm).then(res => {
         this.$message.success("文章发布成功")
         this.$refs['articleFormRef'].resetFields();
@@ -162,7 +158,6 @@ export default {
     },
     getCategorys() {
       this.$http.get('categorys/',).then(res => {
-        // console.log(res.data);
         this.categorys = res.data.results
       }).catch(err => {
         this.$message.error("获取数据失败")
@@ -170,7 +165,6 @@ export default {
     },
     getTages() {
       this.$http.get('tags/',).then(res => {
-        // console.log(res);
         this.taglist = res.data.results
       }).catch(err => {
         this.$message.error("获取数据失败")

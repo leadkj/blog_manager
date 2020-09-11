@@ -53,7 +53,6 @@ export default {
     },
     login() {
       this.$refs.loginformRef.validate(valid => {
-        console.log(valid);
         if (valid) {
           //axios
           this.$http.post('tauth/', this.loginform).then(res => {

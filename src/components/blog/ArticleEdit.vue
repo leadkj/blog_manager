@@ -33,7 +33,7 @@
           </el-col>
         </el-form-item>
         <el-form-item label="文章内容" prop="content" required>
-          <VueEditor style="width: 80%"
+          <VueEditor style="width: 80%;height: 400px;margin-bottom: 50px"
                      useCustomImageHandler @image-added="handleImageAdded"
                      :editorToolbar="customToolbar"
                      v-model="articleForm.content"></VueEditor>
@@ -131,7 +131,6 @@ export default {
     handleImageAdded(file, Editor, cursorLocation, resetUploader) {
       let formData = new FormData();
       formData.append('image', file);
-      // console.log(formData.get('file'));
       this.$http({
         url: 'articles/imageUpload/',
         method: 'post',
@@ -140,10 +139,8 @@ export default {
           'Content-Type': 'multipart/form-data'
         },
       }).then(res => {
-        console.log(res);
         Editor.insertEmbed(cursorLocation, 'image', res.data.url);
         resetUploader();
-        console.log(this.content);
       }).catch(err => {
         console.log(err);
         this.$message.error("图片上传失败")
@@ -151,7 +148,6 @@ export default {
 
     },
     submitForm() {
-      // console.log(this.articleForm);
       this.$http.put('articles/'+this.articleForm.id+'/', this.articleForm).then(res => {
         this.$message.success("更新成功")
         // this.$refs['articleFormRef'].resetFields();
@@ -161,7 +157,6 @@ export default {
     },
     getCategorys() {
       this.$http.get('categorys/',).then(res => {
-        // console.log(res.data);
         this.categorys = res.data.results
       }).catch(err => {
         this.$message.error("获取数据失败")
@@ -169,7 +164,6 @@ export default {
     },
     getTages() {
       this.$http.get('tags/',).then(res => {
-        // console.log(res);
         this.taglist = res.data.results
       }).catch(err => {
         this.$message.error("获取数据失败")
@@ -183,11 +177,9 @@ export default {
       this.articleForm.author = data.author.id
       this.articleForm.category = data.category.id
       this.articleForm.tag = data.tag.map(item=>{return item.id})
-      console.log(this.articleForm);
     })
     this.getTages()
     this.getCategorys()
-    // console.log(this.articleForm)
   },
   beforeDestroy() {
     eventBus.$off("sendArtinfo")

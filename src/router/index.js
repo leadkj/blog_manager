@@ -8,6 +8,7 @@ import ArticleCpn from "@/components/blog/ArticleCpn";
 import TagCpn from "@/components/blog/TagCpn";
 import ArticleEdit from "@/components/blog/ArticleEdit";
 import ArticleAdd from "@/components/blog/ArticleAdd";
+import UsersCpn from "@/components/users/UsersCpn";
 Vue.use(VueRouter)
 
 const routes = [
@@ -53,6 +54,10 @@ const routes = [
             {
                 path: '/article/:id',
                 component: ArticleEdit
+            },
+            {
+                path: '/userinfo',
+                component: UsersCpn
             }
 
         ]

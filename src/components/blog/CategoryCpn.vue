@@ -154,7 +154,6 @@ export default {
   methods: {
     getCategorys() {
       this.$http.get('categorys/', {params: this.queryinfo}).then(res => {
-        // console.log(res.data);
         this.categorys = res.data
       }).catch(err => {
         this.$message.error("获取数据失败")
@@ -201,15 +200,14 @@ export default {
       this.modifyCatedialogVisible = true
     },
     modifyCate() {
-      console.log(this.modifyCateForm);
       this.$http.put('categorys/' + this.modifyCateForm.id + '/', this.modifyCateForm).then(res => {
         this.modifyCatedialogVisible = false
         this.$message.success("修改分类成功")
         this.getCategorys()
       }).catch(
           err => {
-        this.$message.err("修改分类失败")
-      }
+            this.$message.err("修改分类失败")
+          }
       )
     },
   }

@@ -134,7 +134,6 @@ export default {
   methods: {
     getTages() {
       this.$http.get('tags/', {params: this.queryinfo}).then(res => {
-        console.log(res);
         this.taglist = res.data
       }).catch(err => {
         this.$message.error("获取数据失败")
