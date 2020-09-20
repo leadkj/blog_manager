@@ -9,6 +9,7 @@ import TagCpn from "@/components/blog/TagCpn";
 import ArticleEdit from "@/components/blog/ArticleEdit";
 import ArticleAdd from "@/components/blog/ArticleAdd";
 import UsersCpn from "@/components/users/UsersCpn";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -20,11 +21,17 @@ const routes = [
     {
         path: '/login',
         name: 'login',
-        component: LoginCpn
+        component: LoginCpn,
+        meta: {
+            title: "登录"
+        }
     },
     {
         path: '/',
-        redirect: '/login'
+        redirect: '/login',
+        meta: {
+            title: "登录"
+        }
     },
     {
         path: '/index',
@@ -33,31 +40,52 @@ const routes = [
         children: [
             {
                 path: '/welcome',
-                component: WelcomeCpn
+                component: WelcomeCpn,
+                meta: {
+                    title: "欢迎"
+                }
             },
             {
                 path: '/category',
-                component: CategoryCpn
+                component: CategoryCpn,
+                meta: {
+                    title: "分类管理"
+                }
             },
             {
                 path: '/article',
-                component: ArticleCpn
+                component: ArticleCpn,
+                meta: {
+                    title: "文章管理"
+                }
             },
             {
                 path: '/tag',
-                component: TagCpn
+                component: TagCpn,
+                meta: {
+                    title: "标签管理"
+                }
             },
             {
                 path: '/article/add',
-                component: ArticleAdd
+                component: ArticleAdd,
+                meta: {
+                    title: "添加博文"
+                }
             },
             {
                 path: '/article/:id',
-                component: ArticleEdit
+                component: ArticleEdit,
+                meta: {
+                    title: "修改博文"
+                }
             },
             {
                 path: '/userinfo',
-                component: UsersCpn
+                component: UsersCpn,
+                meta: {
+                    title: "用户管理"
+                }
             }
 
         ]
@@ -75,6 +103,7 @@ router.beforeEach((to, from, next) => {
     //to:表示将要访问的路径
     //from:表示从哪里来
     //next() 放行，next('/path') 强制跳转到哪里
+    if (to.meta.title){document.title = to.meta.title}
     if (to.path == '/login') return next(); //如果访问的是login，不需要验证，直接跳转
     //如果访问的不是验证token
     const token = window.sessionStorage.getItem('token')
