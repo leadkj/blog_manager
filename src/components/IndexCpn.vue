@@ -4,7 +4,7 @@
     <el-header>
       <div>
         <img src="">
-        <span>博客后台管理系统</span>
+        <span>后台管理系统</span>
       </div>
       <el-button type="info" plain @click="logout">退出</el-button>
     </el-header>
@@ -49,8 +49,10 @@ export default {
     return {
       menulist: [],
       iconlist: {
-        1: 'el-icon-notebook-1',
-        2: 'el-icon-user-solid'
+        1: 'el-icon-s-platform',
+        2: 'el-icon-notebook-1',
+        3: 'el-icon-s-unfold',
+        4: 'el-icon-user-solid'
       },
       iscollapse: false,
       default_active: ''
@@ -72,6 +74,7 @@ export default {
   },
   created() {
     this.$http.get('get_menu/').then(res => {
+      // console.log(res);
       if (res.data.status !== 200) return this.$message.error("获取菜单数据失败")
       this.menulist = res.data.data
       this.default_active = window.sessionStorage.getItem('activepath')

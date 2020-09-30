@@ -18,7 +18,10 @@ import {Row} from "element-ui";
 import {Col} from "element-ui";
 import {Table} from "element-ui";
 import {Switch,Tooltip,Pagination,Dialog,Divider,DatePicker,Select,Option,TimePicker} from "element-ui";
-
+import {Loading} from "element-ui";
+import {PageHeader} from "element-ui";
+Vue.use(PageHeader)
+Vue.use(Loading)
 Vue.use(Option)
 Vue.use(TimePicker)
 Vue.use(Button)
