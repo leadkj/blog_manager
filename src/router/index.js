@@ -16,6 +16,8 @@ import EditJob from "@/components/jenkins/EditJob";
 import BuildJob from "@/components/jenkins/BuildJob";
 import JobInfo from "@/components/jenkins/JobInfo";
 import BuildLog from "@/components/jenkins/BuildLog";
+import InstanceCpn from "@/components/assets/InstanceCpn";
+import ConsoleCpn from "@/components/assets/ConsoleCpn";
 
 Vue.use(VueRouter)
 
@@ -41,10 +43,25 @@ const routes = [
         }
     },
     {
+        path: '/console/:ipaddr',
+        name: 'console',
+        component: ConsoleCpn,
+        meta: {
+            title: "console"
+        }
+    },
+    {
         path: '/index',
         component: IndexCpn,
         redirect: 'welcome',
         children: [
+            {
+                path: '/instance',
+                component: InstanceCpn,
+                meta: {
+                    title: "主机管理"
+                }
+            },
             {
                 path: '/welcome',
                 component: WelcomeCpn,

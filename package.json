@@ -12,7 +12,9 @@
     "element-ui": "^2.4.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
-    "vue2-editor": "^2.10.2"
+    "vue2-editor": "^2.10.2",
+    "xterm": "^4.9.0",
+    "xterm-addon-attach": "^0.6.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -22,7 +24,8 @@
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "vue-cli-plugin-element": "^1.0.1",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "xterm-addon-fit": "^0.4.0"
   },
   "browserslist": [
     "> 1%",

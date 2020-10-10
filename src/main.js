@@ -24,7 +24,6 @@ export  function closeLoading()
     loading.close()
 }
 
-
 Vue.use(VueEditor)
 //配置axios 请求根路径
 axios.defaults.baseURL = 'http://127.0.0.1/api/v1/'
