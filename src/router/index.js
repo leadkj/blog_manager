@@ -105,7 +105,7 @@ const routes = [
                 }
             },
             {
-                path: '/userinfo',
+                path: '/user',
                 component: UsersCpn,
                 meta: {
                     title: "用户管理"

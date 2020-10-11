@@ -39,12 +39,12 @@
             width="180">
         </el-table-column>
         <el-table-column
-            prop="desc"
-            label="描述">
+            prop="group"
+            label="主机组">
         </el-table-column>
         <el-table-column
-            prop="publish"
-            label="创建时间">
+            prop="origin"
+            label="主机来源">
         </el-table-column>
         <el-table-column
             prop="status"
@@ -63,12 +63,12 @@
           <template slot-scope="scope">
             <!--            {{ scope.row }}-->
             <el-tooltip class="item" effect="dark" content="console" placement="top" :enterable="false">
-              <el-button type="primary" size="small" icon="el-icon-edit"
+              <el-button  icon="el-icon-s-platform" circle size="normal"
                          @click="Console(scope.row)"></el-button>
             </el-tooltip>
-<!--            <el-tooltip class="item" effect="dark" content="删除文章" placement="top" :enterable="false">-->
-<!--              <el-button type="danger" size="small" icon="el-icon-delete" @click="getDelArtId(scope.row)"></el-button>-->
-<!--            </el-tooltip>-->
+            <el-tooltip class="item" effect="dark" content="主机信息" placement="top" :enterable="false">
+              <el-button size="normal" icon="el-icon-info" circle @click=""></el-button>
+            </el-tooltip>
 
 
           </template>
