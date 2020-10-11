@@ -22,7 +22,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### some pages
 
 ## 主机管理
-https://github.com/leadkj/blog_manager/raw/jenkins/src/assets/demo/1.png
+![说明文字](https://github.com/leadkj/blog_manager/raw/jenkins/src/assets/demo/1.png)
 
 ## 文章管理
 https://github.com/leadkj/blog_manager/raw/jenkins/src/assets/demo/2.png
